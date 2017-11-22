@@ -1,0 +1,5 @@
+br/com/projeto/trilha/dao/LancamentoDaoImpl.class
+br/com/projeto/trilha/model/Lancamento.class
+br/com/projeto/trilha/dao/LancamentoDao.class
+br/com/projeto/trilha/service/LancamentoService.class
+br/com/projeto/trilha/ejb/LancamentoBean.class
