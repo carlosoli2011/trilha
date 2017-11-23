@@ -6,14 +6,14 @@ import java.sql.SQLException;
 
 import br.com.projeto.trilha.model.Lancamento;
 
-public class LancamentoDaoImpl implements LancamentoDao{
+public class LancamentoDaoImpl implements LancamentoDao {
 
-	//persiste no banco de dados
-	
+	// persiste no banco de dados
+
 	public Lancamento adicionarLancamento(Lancamento novoLancamento) {
 		// TODO regra
 		Connection con = null;
-		
+
 		try {
 			String insert_sql = "insert into lancamento (nome, tipolancamento, valor) values (?, ?, ?)";
 			String update_sql = "update lancamento set nome = ?, tipolancamento = ?, valor = ? where id = ?";
@@ -27,20 +27,26 @@ public class LancamentoDaoImpl implements LancamentoDao{
 			pst.setString(1, novoLancamento.getNome());
 			pst.setString(2, novoLancamento.getTipoLancamento());
 			pst.setFloat(3, (float) novoLancamento.getValor());
-			
+
 			pst.executeUpdate();
-			
+
 		} catch (Exception e) {
-			//throw new DAOException("Operação não realizada com sucesso.", e);
+			// throw new DAOException("Operação não realizada com sucesso.", e);
 		} finally {
 			try {
 				if (con != null)
 					con.close();
 			} catch (SQLException e) {
-				//throw new DAOException("Não foi possível fechar a conexão.",e);
-}
+				// throw new DAOException("Não foi possível fechar a conexão.",e);
+			}
 		}
-		return null;
+
+		//teste lancamento
+		Lancamento lancamento = new Lancamento();
+		lancamento.setNome("JOAO");
+		lancamento.setTipoLancamento("NORMALIZADO");
+		lancamento.setValor(10);
+		return lancamento;
 	}
 
 }
